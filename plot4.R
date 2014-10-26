@@ -34,13 +34,13 @@ Coal_Combust <- grep("coal",Source_Classification$EI.Sector,value=T,ignore.case=
 
 ## So now we will filter the Source_Classification dataframe using the Coal_Combust vector. 
 ## Please also note that we are using the above filter to get the values of the corresponsing 
-## SCC variables only.
+## SC_CC variables only.
 
 SC_CC <- subset(Source_Classification, Source_Classification$EI.Sector %in% Coal_Combust, select= SCC)
   
 
 ## Now, will merge (using the merge function) the NEI dataframe with SC_CC dataframe so that NEI Dataframe only contains 
-## SCC values contained in SC_CC dataframe
+## SCC values contained in SC_CC dataframe. This is equivalent to a Join function in SQL.
 
 NEI_CC <- merge(NEI, SC_CC, by.y="SCC")
 
@@ -74,6 +74,6 @@ dev.off()
 
 ## Observations: The plot clearly shows that Total PM 2.5 emissions for Coal Combustion from 1999 to 2002,
 ## there was a slight downward trend. However, between 2002 and 2005 there was a slight upward trend.
-# From 2005 to 2008 howeve, there was a significant downward trend in Emission Numbers. Please also note that 
+# From 2005 to 2008 however, there was a significant downward trend in Emission Numbers. Please also note that 
 ## in the plot above, the unit used for Emission numbers is Million of Tons (10^6 tons)
 
