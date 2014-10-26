@@ -30,6 +30,11 @@ total_typePM25_ByYear <- ddply(NEI_Baltimore, .(year, type), function(x) sum(x$E
 
 colnames(total_typePM25_ByYear)[3] <- "Emissions"
 
+## If all options of ggplot2 are not used, it generates some warnings to point to
+## user that other options are also available. This is a good feature of ggplot2.
+## However since I do not want any warnings to appear, I am suppressing the warnings
+## by using Options(warn = -1). The default is Options(warn = 0)
+
 options(warn = -1)
 
 ## Plotting the graph using ggplot
