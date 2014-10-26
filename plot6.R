@@ -85,22 +85,13 @@ Emissions_1999_LA <- subset(total_Vehicle_Emissions_ByYear,year == "1999" & regi
 total_Vehicle_Emissions_ByYear_Norm <- transform(total_Vehicle_Emissions_ByYear, Emissions_Norm = ifelse(region == "Baltimore City",
                                                                                                         Emissions / Emissions_1999_Balt,
                                                                                                         Emissions / Emissions_1999_LA))
-
-## If all options of ggplot2 are not used, it generates some warnings to point to
-## user that other options are also available. This is a good feature of ggplot2.
-## However since I do not want any warnings to appear, I am suppressing the warnings
-## by using Options(warn = -1). The default is Options(warn = 0)
-
-options(warn = -1)
-
 ## Plotting the graph using ggplot
 
 png("plot6.png", width=600)
 qplot(year, Emissions_Norm, data=total_Vehicle_Emissions_ByYear_Norm, geom="line", color=region) +
-  ggtitle(expression("Total" ~ PM[2.5] ~
-                       "Motor Vehicle Emissions Normalized to 1999 Levels")) +
-  xlab("Year") +
-  ylab(expression("Normalized" ~ PM[2.5] ~ "Emissions"))
+ggtitle(expression("Total" ~ PM[2.5] ~ "Motor Vehicle Emissions Normalized to 1999 Levels")) +
+  xlab("Year") + ylab(expression("Normalized" ~ PM[2.5] ~ "Emissions"))
+
 dev.off()
 
 ## Observations: The Normalized plot clearly shows that Total PM 2.5 emissions for Motor Vehicles in Baltimore City
